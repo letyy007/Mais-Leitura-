@@ -1,11 +1,18 @@
 const {Cliente, Client} = require("pg");
 
 
-function query(aql){
+async function query(aql){
     const client = new Client({
         host: "",
-        port: ,
+        port: "",
         user: "",
         password: "",
-    })
+    });
+    await client.connect();
+
+    const res = await client.query(aql, args);
+
+    await client.end();
+    return res.rows;
 }
+module.exports = { query };
