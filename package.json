@@ -13,7 +13,8 @@
     "test:watch": "jest --watch",
     "service:up": "docker compose up -d",
     "service:down": "docker compose down",
-    "migrate:create": "node-pg-migrate create"
+    "migrate:create": "node-pg-migrate -m infra/migrations create",
+    "migreate:up": "node-pg-migrate -m infra/migrations -- env Path .env up"
   },
   "author": "",
   "license": "ISC",
@@ -28,3 +29,6 @@
     "pg": "^8.16.3"
   }
 }
+
+
+                                  
