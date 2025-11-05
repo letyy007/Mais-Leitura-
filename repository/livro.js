@@ -1,11 +1,10 @@
-const { query} = require("../databese");
+const {query} = require ("../databese");
 
 async function consulterTodos() {
     const sql = `SELET * FROM livro`;
 
-    const reusltados = await query(sql)
+const resultados = await query(sql)
 
-    return reusltatodos;
-
+    return resultados;
 }
-module.exports ={ consulterTodos};
+module.exports = {consulterTodos};
