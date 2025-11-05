@@ -1,4 +1,4 @@
-const {query} = require ("../databese");
+const {query} = require ("../database");
 
 async function consulterTodos() {
     const sql = `SELET * FROM livro`;
