@@ -9,25 +9,23 @@ export const shorthands = undefined;
  * @returns {Promise<void> | void}
  */
 export const up = (pgm) => {
-    
- pgm.sql(`
+  pgm.sql(`
     CREATE TABLE livro(
-    id VARCHAR(36) PRIMARY KEY,
-    numero_paginas INTEGER,
-    autor VARCHAR (255),
-    titulo VARCHAR(100) NOT NULL,
-    gemero  VARCHAR (100) NOT NULL,
-    data_publicacao DATE,
-ismb TEXT,
-resumo TEXT,
-imagem_capa TEXT,
-editora VARCHAR (255),
-disponibilidade BOOLEAM DEFAULT true,
-tags TEXT
-preco NUMERIC(10, 2) DEFAULT 0.0
- )
- `);
-
+      id VARCHAR(36) PRIMARY KEY,
+      numero_paginas INTEGER,
+      autor VARCHAR(255),
+      titulo VARCHAR(100) NOT NULL,
+      genero VARCHAR(100) NOT NULL,
+      data_publicacao DATE,
+      isbm TEXT,
+      resumo TEXT,
+      imagem_capa TEXT,
+      editora VARCHAR(255),
+      disponibilidade BOOLEAN DEFAULT true,
+      tags TEXT,
+      preco NUMERIC(10, 2) DEFAULT 0.0
+    );
+  `);
 };
 
 /**
@@ -36,8 +34,7 @@ preco NUMERIC(10, 2) DEFAULT 0.0
  * @returns {Promise<void> | void}
  */
 export const down = (pgm) => {
-pgm.sql(`
+  pgm.sql(`
     DROP TABLE livro;
-`);
-    
+  `);
 };

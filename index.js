@@ -1,15 +1,14 @@
 require("dotenv").config();
 const livroRepository = require("./infra/repository/livro");
-const http = require("node:http");
+const express = require("express");
+const app = express();
 
-const server = http.createServer(function (req, res) {
-  //res.writeHead(200, {"content-type": "text/plain"})
-  console.log(req.method, req.uel);
-  res.end("Ok bem vindo");
+app.get("", function (req, res) {
+  console.log(req.method, req.url);
+  res.send("Neymar dlç");
 });
 
 const port = process.env.PORT || 3000;
-
-server.listen(port, function () {
-  console.log("Inicializando servidor HTTP na porta " + port);
+app.listen(port, function () {
+  console.log("Inicializando server");
 });
