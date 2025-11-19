@@ -3,12 +3,45 @@ const livroRepository = require("./infra/repository/livro");
 const express = require("express");
 const app = express();
 
-app.get("", function (req, res) {
-  console.log(req.method, req.url);
-  res.send("Neymar dlç");
+app.get("/", async function (req, res) {
+  const livrosTops = await livroRepository.consultaTops();
+  const livrosMaisAdquiridos = await livroRepository.consultaMaisAdquiridos();
+
+  const itensTops = "";
+  for (livro of livrosTops) {
+    itensTops += `<li>${livro.titulo}</li>`;
+  }
+
+  const itensMaisAdquiridos = "";
+  for (livro of livrosMaisAdquiridos) {
+    itensMaisAdquiridos += `<li>${livro.titulo}</li>`;
+  }
+
+  let html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <p>Itens Tops</p>
+    <ul>
+    ${itensTops}
+    </ul>
+
+    <p>Itens mais adquiridos</p>
+    <ul>
+    ${itensMaisAdquiridos}
+    </ul>
+  </body>
+</html>`;
+
+  res.send(html);
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, function () {
   console.log("Inicializando server");
 });
